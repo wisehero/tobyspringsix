@@ -9,7 +9,7 @@ public class PaymentService {
 	private final ExRateProvider exRateProvider;
 
 	public PaymentService(WebApiExRatePaymentProvider exRateProvider) {
-		this.exRateProvider = new We;
+		this.exRateProvider = new WebApiExRatePaymentProvider();
 	}
 
 	public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws
