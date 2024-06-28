@@ -19,7 +19,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PaymentService {
 	public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws
 		IOException {
-		// 환율 가져오기
+		BigDecimal exRate = getKRWexRate(currency);
+
+		BigDecimal convertedAmount = foreignCurrencyAmount.multiply(exRate);
+		LocalDateTime validUntil = LocalDateTime.now().plusMinutes(30);
+
+		return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount,
+			validUntil);
+	}
+
+	private BigDecimal getKRWexRate(String currency) throws IOException {
 		URL url = new URL("https://open.er-api.com/v6/latest/" + currency);
 		HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -28,17 +37,7 @@ public class PaymentService {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		ExRateData data = objectMapper.readValue(response, ExRateData.class);
-		BigDecimal exRate = data.rates().get("KRW");
-
-		// 금액 계산
-		BigDecimal convertedAmount = foreignCurrencyAmount.multiply(exRate);
-
-		// 유효 시간 계산
-		LocalDateTime validUntil = LocalDateTime.now().plusMinutes(30);
-		System.out.println(convertedAmount);
-
-		return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount,
-			validUntil);
+		return data.rates().get("KRW");
 	}
 
 	public static void main(String[] args) throws IOException {
