@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 
 public class PaymentService {
 
-	private final WebApiExRatePaymentService exRateProvider;
+	private final ExRateProvider exRateProvider;
 
-	public PaymentService(WebApiExRatePaymentService exRateProvider) {
-		this.exRateProvider = exRateProvider;
+	public PaymentService(WebApiExRatePaymentProvider exRateProvider) {
+		this.exRateProvider = new We;
 	}
 
 	public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws

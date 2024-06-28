@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class WebApiExRatePaymentService {
+public class WebApiExRatePaymentProvider implements ExRateProvider {
 
 	public BigDecimal getExRate(String currency) throws IOException {
 		URL url = new URL("https://open.er-api.com/v6/latest/" + currency);
