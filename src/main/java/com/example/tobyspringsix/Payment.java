@@ -21,28 +21,28 @@ public class Payment {
 		this.validUntil = validUntil;
 	}
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
+	public LocalDateTime getValidUntil() {
+		return validUntil;
 	}
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
+	public BigDecimal getConvertedAmount() {
+		return convertedAmount;
 	}
 
-	public void setForeignCurrencyAmount(BigDecimal foreignCurrencyAmount) {
-		this.foreignCurrencyAmount = foreignCurrencyAmount;
+	public BigDecimal getExRate() {
+		return exRate;
 	}
 
-	public void setExRate(BigDecimal exRate) {
-		this.exRate = exRate;
+	public BigDecimal getForeignCurrencyAmount() {
+		return foreignCurrencyAmount;
 	}
 
-	public void setConvertedAmount(BigDecimal convertedAmount) {
-		this.convertedAmount = convertedAmount;
+	public String getCurrency() {
+		return currency;
 	}
 
-	public void setValidUntil(LocalDateTime validUntil) {
-		this.validUntil = validUntil;
+	public Long getOrderId() {
+		return orderId;
 	}
 
 	@Override
