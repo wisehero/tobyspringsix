@@ -24,6 +24,8 @@ public class WebApiExRatePaymentProvider implements ExRateProvider {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 		ExRateData data = objectMapper.readValue(response, ExRateData.class);
+
+		System.out.println("API ExRate: " + data.rates().get("KRW"));
 		return data.rates().get("KRW");
 	}
 }
