@@ -3,6 +3,9 @@ package com.example.tobyspringsix;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SimpleExRateProvider implements ExRateProvider {
 	@Override
 	public BigDecimal getExRate(String currency) throws IOException {
