@@ -1,4 +1,4 @@
-package com.example.tobyspringsix;
+package com.example.tobyspringsix.payment;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,8 +1,10 @@
-package com.example.tobyspringsix;
+package com.example.tobyspringsix.exrate;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import com.example.tobyspringsix.payment.ExRateProvider;
 
 public class CacheExRateProvider implements ExRateProvider {
 	private final ExRateProvider target;

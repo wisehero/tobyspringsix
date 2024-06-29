@@ -7,6 +7,9 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.example.tobyspringsix.payment.Payment;
+import com.example.tobyspringsix.payment.PaymentService;
+
 public class Client {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		BeanFactory beanFactory = new AnnotationConfigApplicationContext(ObjectFactory.class);

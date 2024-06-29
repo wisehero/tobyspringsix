@@ -1,4 +1,4 @@
-package com.example.tobyspringsix;
+package com.example.tobyspringsix.exrate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
+import com.example.tobyspringsix.payment.ExRateProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component

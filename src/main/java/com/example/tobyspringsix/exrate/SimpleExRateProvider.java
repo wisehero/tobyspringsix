@@ -1,9 +1,11 @@
-package com.example.tobyspringsix;
+package com.example.tobyspringsix.exrate;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
+
+import com.example.tobyspringsix.payment.ExRateProvider;
 
 @Component
 public class SimpleExRateProvider implements ExRateProvider {
