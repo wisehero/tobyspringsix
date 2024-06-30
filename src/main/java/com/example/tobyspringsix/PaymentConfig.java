@@ -1,5 +1,7 @@
 package com.example.tobyspringsix;
 
+import java.time.Clock;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +10,7 @@ import com.example.tobyspringsix.payment.ExRateProvider;
 import com.example.tobyspringsix.payment.PaymentService;
 
 @Configuration
-public class ObjectFactory {
+public class PaymentConfig {
 
 	// @Bean
 	// public PaymentService paymentService() {
@@ -22,11 +24,16 @@ public class ObjectFactory {
 
 	@Bean
 	public PaymentService paymentService() {
-		return new PaymentService(exRateProvider());
+		return new PaymentService(exRateProvider(), clock());
 	}
 
 	@Bean
 	public ExRateProvider exRateProvider() {
 		return new WebApiExRatePaymentProvider();
+	}
+
+	@Bean
+	public Clock clock() {
+		return Clock.systemDefaultZone();
 	}
 }
