@@ -1,6 +1,5 @@
 package com.example.tobyspringsix;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.BeanFactory;
@@ -10,7 +9,7 @@ import com.example.tobyspringsix.payment.Payment;
 import com.example.tobyspringsix.payment.PaymentService;
 
 public class Client {
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void main(String[] args) {
 		BeanFactory beanFactory = new AnnotationConfigApplicationContext(PaymentConfig.class);
 		PaymentService paymentService = beanFactory.getBean(PaymentService.class);
 
