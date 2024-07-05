@@ -19,9 +19,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class WebApiExRatePaymentProvider implements ExRateProvider {
 
 	public BigDecimal getExRate(String currency) {
-		URI uri = null;
+		String url = "https://open.er-api.com/v6/latest/" + currency;
+		return runApiForExRate(url);
+	}
+
+	private static BigDecimal runApiForExRate(String url) {
+		URI uri;
 		try {
-			uri = new URI("https://open.er-api.com/v6/latest/" + currency);
+			uri = new URI(url);
 		} catch (URISyntaxException e) {
 			throw new RuntimeException(e);
 		}
@@ -34,13 +39,13 @@ public class WebApiExRatePaymentProvider implements ExRateProvider {
 		}
 
 		try {
-			return parseExRate(response);
+			return extractExRate(response);
 		} catch (JsonProcessingException e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	private static BigDecimal parseExRate(String response) throws JsonProcessingException {
+	private static BigDecimal extractExRate(String response) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		ExRateData data = objectMapper.readValue(response, ExRateData.class);
 		return data.rates().get("KRW");
