@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
+import com.example.tobyspringsix.api.SimpleApiExecutor;
 import com.example.tobyspringsix.payment.ExRateProvider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ public class WebApiExRatePaymentProvider implements ExRateProvider {
 
 		String response;
 		try {
-			response = executeApi(uri);
+			response = new SimpleApiExecutor().execute(uri);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
