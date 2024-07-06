@@ -12,7 +12,11 @@ import com.example.tobyspringsix.payment.ExRateProvider;
 @Component
 public class WebApiExRatePaymentProvider implements ExRateProvider {
 
-	private final ApiTemplate apiTemplate = new ApiTemplate();
+	private final ApiTemplate apiTemplate;
+
+	public WebApiExRatePaymentProvider(ApiTemplate apiTemplate) {
+		this.apiTemplate = apiTemplate;
+	}
 
 	public BigDecimal getExRate(String currency) {
 		String url = "https://open.er-api.com/v6/latest/" + currency;
