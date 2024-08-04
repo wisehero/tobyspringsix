@@ -8,6 +8,12 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import com.example.tobyspringsix.data.OrderRepository;
 
+/**
+ * 현재 아래의 애플리케이션 서비스는 JPA에 의존하고 있음
+ * JPA를 사용하는 Repository 클래스에 의존하고 있음
+ * JPA Transaction Manager에 의존하고 있음
+ *
+ */
 @Service
 public class OrderService {
 
