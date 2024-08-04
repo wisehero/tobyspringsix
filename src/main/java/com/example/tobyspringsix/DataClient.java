@@ -4,27 +4,21 @@ import java.math.BigDecimal;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.example.tobyspringsix.data.OrderRepository;
 import com.example.tobyspringsix.order.Order;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 
 public class DataClient {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(
 			DataConfig.class);
-		EntityManagerFactory emf = ac.getBean(EntityManagerFactory.class);
-
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
+		OrderRepository repository = ac.getBean(OrderRepository.class);
 
 		Order order = new Order("100", BigDecimal.TEN);
-
-		em.persist(order);
+		repository.save(order);
 
 		System.out.println(order);
 
-		em.getTransaction().commit();
-		em.clear();
+		Order order2 = new Order("100", BigDecimal.TEN);
+		repository.save(order2);
 	}
 }
