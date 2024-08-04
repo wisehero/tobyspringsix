@@ -19,7 +19,6 @@ public class JdbcOrderRepository implements OrderRepository {
 
 	@PostConstruct
 	void initDb() {
-		System.out.println("SFasdfsadfsaF");
 		jdbcClient.sql("""
 			create table orders
 			(

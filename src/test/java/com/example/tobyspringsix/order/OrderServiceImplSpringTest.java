@@ -17,7 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = OrderConfig.class)
-public class OrderServiceSpringTest {
+public class OrderServiceImplSpringTest {
 
 	@Autowired
 	OrderService orderService;
@@ -53,7 +53,6 @@ public class OrderServiceSpringTest {
 			new OrderRequest("0300", BigDecimal.ONE),
 			new OrderRequest("0300", BigDecimal.TWO)
 		);
-
 
 		assertThatThrownBy(() -> orderService.createOrders(orderRequests))
 			.isInstanceOf(DataIntegrityViolationException.class);
